@@ -13,6 +13,8 @@ class Temperature
 
   def record_temperature_farenheit(temp)
     @farenheit = temp
+    @celsius = ((temp - 32) * 5 / 9.to_f).round(2)
+    @kelvin = (@celsius + 273.15).round(2)
   end
 
   def record_temperature_celsius(temp)
