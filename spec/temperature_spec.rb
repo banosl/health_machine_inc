@@ -53,6 +53,24 @@ RSpec.describe Temperature do
 
         expect(@patient_1.temperature.celsius).to eq(39)
       end
+
+      it 'updates the farenheit and kelvin temperatures from the entered celsius temp' do
+        expect(@patient_1.temperature.farenheit).to eq(98.6)
+        expect(@patient_1.temperature.celsius).to eq(37)
+        expect(@patient_1.temperature.kelvin).to eq(310.15)
+
+        @patient_1.temperature.record_temperature_celsius(39)
+
+        expect(@patient_1.temperature.celsius).to eq(39)
+        expect(@patient_1.temperature.farenheit).to eq(102.2)
+        expect(@patient_1.temperature.kelvin).to eq(312.15)
+
+        @patient_1.temperature.record_temperature_celsius(28)
+
+        expect(@patient_1.temperature.celsius).to eq(28)
+        expect(@patient_1.temperature.farenheit).to eq(82.4)
+        expect(@patient_1.temperature.kelvin).to eq(301.15)
+      end
     end
   end
 
