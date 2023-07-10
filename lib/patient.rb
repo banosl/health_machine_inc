@@ -18,4 +18,18 @@ class Patient
       @temperature.last.record_temperature_celsius(temp)
     end
   end
+
+  def latest_temperature_readings
+    {
+      temperature[-1].time => [temperature[-1].farenheit,
+                               temperature[-1].celsius,
+                               temperature[-1].kelvin],
+      temperature[-2].time => [temperature[-2].farenheit,
+                               temperature[-2].celsius,
+                               temperature[-2].kelvin],
+      temperature[-3].time => [temperature[-3].farenheit,
+                               temperature[-3].celsius,
+                               temperature[-3].kelvin]
+    }
+  end
 end
