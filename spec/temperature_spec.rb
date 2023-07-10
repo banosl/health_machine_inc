@@ -36,6 +36,12 @@ RSpec.describe Temperature do
         expect(@patient_1.temperature.farenheit).to eq(100)
         expect(@patient_1.temperature.celsius).to eq(37.78)
         expect(@patient_1.temperature.kelvin).to eq(310.93)
+
+        @patient_1.temperature.record_temperature_farenheit(80)
+
+        expect(@patient_1.temperature.farenheit).to eq(80)
+        expect(@patient_1.temperature.celsius).to eq(26.67)
+        expect(@patient_1.temperature.kelvin).to eq(299.82)
       end
     end
 
