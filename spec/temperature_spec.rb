@@ -3,45 +3,45 @@ require './lib/patient.rb'
 
 RSpec.describe Temperature do
   describe 'Patient' do  
-    it 'patient has default temperatures in celsius, farenheit, and kelvin' do
-      patient_1 = Patient.new("James", 43)
+    it 'temperature exists and has attributes' do
+      temperature_1 = Temperature.new("F", 98.6)
 
-      expect(patient_1.temperature.celsius).to eq(37)
-      expect(patient_1.temperature.farenheit).to eq(98.6)
-      expect(patient_1.temperature.kelvin).to eq(310.15)
+      expect(temperature_1.celsius).to eq(0)
+      expect(temperature_1.farenheit).to eq(0)
+      expect(temperature_1.kelvin).to eq(0)
     end
   end
 
   describe 'record_temperature in farenheit and celsius' do
     before :each do
-      @patient_1 = Patient.new("James", 43)
+      @temperature_1 = Temperature.new
     end
     
     describe 'record_temperature_farenheit' do
       it 'can save temperature in farenheit' do
-        expect(@patient_1.temperature.farenheit).to eq(98.6)
+        expect(@temperature_1.farenheit).to eq(0)
 
-        @patient_1.temperature.record_temperature_farenheit(100)
+        @temperature_1.record_temperature_farenheit(100)
 
-        expect(@patient_1.temperature.farenheit).to eq(100)
+        expect(@temperature_1.farenheit).to eq(100)
       end
 
       it 'updates the celsius and kelvin temperatures from the entered farenheit temp' do
-        expect(@patient_1.temperature.farenheit).to eq(98.6)
-        expect(@patient_1.temperature.celsius).to eq(37)
-        expect(@patient_1.temperature.kelvin).to eq(310.15)
+        expect(@temperature_1.farenheit).to eq(0)
+        expect(@temperature_1.celsius).to eq(0)
+        expect(@temperature_1.kelvin).to eq(0)
 
-        @patient_1.temperature.record_temperature_farenheit(100)
+        @temperature_1.record_temperature_farenheit(100)
 
-        expect(@patient_1.temperature.farenheit).to eq(100)
-        expect(@patient_1.temperature.celsius).to eq(37.78)
-        expect(@patient_1.temperature.kelvin).to eq(310.93)
+        expect(@temperature_1.farenheit).to eq(100)
+        expect(@temperature_1.celsius).to eq(37.78)
+        expect(@temperature_1.kelvin).to eq(310.93)
 
-        @patient_1.temperature.record_temperature_farenheit(80)
+        @temperature_1.record_temperature_farenheit(80)
 
-        expect(@patient_1.temperature.farenheit).to eq(80)
-        expect(@patient_1.temperature.celsius).to eq(26.67)
-        expect(@patient_1.temperature.kelvin).to eq(299.82)
+        expect(@temperature_1.farenheit).to eq(80)
+        expect(@temperature_1.celsius).to eq(26.67)
+        expect(@temperature_1.kelvin).to eq(299.82)
       end
     end
 

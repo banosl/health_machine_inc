@@ -2,9 +2,9 @@ class Temperature
   attr_reader :celsius, :farenheit, :kelvin
 
   def initialize
-    @celsius = 37.00
-    @farenheit = 98.6
-    @kelvin = 310.15
+    @farenheit = 0
+    @celsius = 0
+    @kelvin = 0
   end
 
   def has_fever?
