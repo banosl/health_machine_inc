@@ -9,6 +9,7 @@ RSpec.describe Temperature do
       expect(temperature_1.celsius).to eq(0)
       expect(temperature_1.farenheit).to eq(0)
       expect(temperature_1.kelvin).to eq(0)
+      expect(temperature_1.time).to eq(0)
     end
   end
 
@@ -18,12 +19,13 @@ RSpec.describe Temperature do
     end
     
     describe 'record_temperature_farenheit' do
-      it 'can save temperature in farenheit' do
+      it 'can save temperature in farenheit and records the time' do
         expect(@temperature_1.farenheit).to eq(0)
 
         @temperature_1.record_temperature_farenheit(100)
 
         expect(@temperature_1.farenheit).to eq(100)
+        expect(@temperature_1.time).to be_instance_of(Time)
       end
 
       it 'updates the celsius and kelvin temperatures from the entered farenheit temp' do
