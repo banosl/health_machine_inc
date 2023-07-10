@@ -1,3 +1,4 @@
+require 'pry'
 require './lib/patient.rb'
 
 class Clinic
@@ -10,5 +11,13 @@ class Clinic
 
   def new_patient(name, age)
     @patients << Patient.new(name, age)
+  end
+
+  def find_patient_by_name(input)
+    name = input.split.map(&:capitalize).join(' ')
+
+    @patients.select do |patient|
+      patient.name.include?(name)
+    end
   end
 end
