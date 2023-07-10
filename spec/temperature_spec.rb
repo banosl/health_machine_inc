@@ -4,7 +4,7 @@ require './lib/patient.rb'
 RSpec.describe Temperature do
   describe 'Patient' do  
     it 'temperature exists and has attributes' do
-      temperature_1 = Temperature.new("F", 98.6)
+      temperature_1 = Temperature.new
 
       expect(temperature_1.celsius).to eq(0)
       expect(temperature_1.farenheit).to eq(0)
@@ -47,51 +47,52 @@ RSpec.describe Temperature do
 
     describe 'record_temperature_celsius' do
       it 'can save temperature in celsius' do
-        expect(@patient_1.temperature.celsius).to eq(37)
+        expect(@temperature_1.celsius).to eq(0)
 
-        @patient_1.temperature.record_temperature_celsius(39)
+        @temperature_1.record_temperature_celsius(39)
 
-        expect(@patient_1.temperature.celsius).to eq(39)
+        expect(@temperature_1.celsius).to eq(39)
       end
 
       it 'updates the farenheit and kelvin temperatures from the entered celsius temp' do
-        expect(@patient_1.temperature.farenheit).to eq(98.6)
-        expect(@patient_1.temperature.celsius).to eq(37)
-        expect(@patient_1.temperature.kelvin).to eq(310.15)
+        expect(@temperature_1.farenheit).to eq(0)
+        expect(@temperature_1.celsius).to eq(0)
+        expect(@temperature_1.kelvin).to eq(0)
 
-        @patient_1.temperature.record_temperature_celsius(39)
+        @temperature_1.record_temperature_celsius(39)
 
-        expect(@patient_1.temperature.celsius).to eq(39)
-        expect(@patient_1.temperature.farenheit).to eq(102.2)
-        expect(@patient_1.temperature.kelvin).to eq(312.15)
+        expect(@temperature_1.celsius).to eq(39)
+        expect(@temperature_1.farenheit).to eq(102.2)
+        expect(@temperature_1.kelvin).to eq(312.15)
 
-        @patient_1.temperature.record_temperature_celsius(28)
+        @temperature_1.record_temperature_celsius(28)
 
-        expect(@patient_1.temperature.celsius).to eq(28)
-        expect(@patient_1.temperature.farenheit).to eq(82.4)
-        expect(@patient_1.temperature.kelvin).to eq(301.15)
+        expect(@temperature_1.celsius).to eq(28)
+        expect(@temperature_1.farenheit).to eq(82.4)
+        expect(@temperature_1.kelvin).to eq(301.15)
       end
     end
   end
 
   describe 'has_fever?' do
     before :each do
-      @patient_1 = Patient.new("James", 43)
-      @patient_2 = Patient.new("Sandra", 22)
+      @temperature_1 = Temperature.new
     end
 
     it 'can return TRUE for when a patient has a temperature of over 100.4 F, 38 C, 311.15 K' do
-      @patient_1.temperature.record_temperature_farenheit(101)
+      @temperature_1.record_temperature_farenheit(101)
 
-      expect(@patient_1.temperature.farenheit).to eq(101)
-      expect(@patient_1.temperature.celsius).to eq(38.33)
-      expect(@patient_1.temperature.kelvin).to eq(311.48)
-      expect(@patient_1.temperature.has_fever?).to eq(true)
+      expect(@temperature_1.farenheit).to eq(101)
+      expect(@temperature_1.celsius).to eq(38.33)
+      expect(@temperature_1.kelvin).to eq(311.48)
+      expect(@temperature_1.has_fever?).to eq(true)
     end
 
     it 'can return FALSE for when a patient has a temperature below 100.4 F, 38 C, 311.15 K' do
-      expect(@patient_2.temperature.farenheit).to eq(98.6)
-      expect(@patient_2.temperature.has_fever?).to eq(false)
+      @temperature_1.record_temperature_farenheit(98.6)
+
+      expect(@temperature_1.farenheit).to eq(98.6)
+      expect(@temperature_1.has_fever?).to eq(false)
     end
   end
 end
