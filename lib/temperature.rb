@@ -10,4 +10,12 @@ class Temperature
   def has_fever?
     @farenheit >= 100.4
   end
+
+  def record_temperature_farenheit(temp)
+    @farenheit = temp
+  end
+
+  def record_temperature_celsius(temp)
+    @celsius = temp
+  end
 end

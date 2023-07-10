@@ -12,8 +12,30 @@ RSpec.describe Temperature do
     end
   end
 
-  describe 'measure_temperature' do
+  describe 'record_temperature in farenheit and celsius' do
+    before :each do
+      @patient_1 = Patient.new("James", 43)
+    end
+    
+    describe 'record_temperature_farenheit' do
+      it 'can save temperature in farenheit' do
+        expect(@patient_1.temperature.farenheit).to eq(98.6)
 
+        @patient_1.temperature.record_temperature_farenheit(100)
+
+        expect(@patient_1.temperature.farenheit).to eq(100)
+      end
+    end
+
+    describe 'record_temperature_celsius' do
+      it 'can save temperature in celsius' do
+        expect(@patient_1.temperature.celsius).to eq(37)
+
+        @patient_1.temperature.record_temperature_celsius(39)
+
+        expect(@patient_1.temperature.celsius).to eq(39)
+      end
+    end
   end
 
   describe 'has_fever?' do
