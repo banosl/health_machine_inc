@@ -80,7 +80,12 @@ RSpec.describe Temperature do
       @patient_2 = Patient.new("Sandra", 22)
     end
 
-    xit 'can return TRUE for when a patient has a temperature of over 100.4 F, 38 C, 311.15 K' do
+    it 'can return TRUE for when a patient has a temperature of over 100.4 F, 38 C, 311.15 K' do
+      @patient_1.temperature.record_temperature_farenheit(101)
+
+      expect(@patient_1.temperature.farenheit).to eq(101)
+      expect(@patient_1.temperature.celsius).to eq(38.33)
+      expect(@patient_1.temperature.kelvin).to eq(311.48)
       expect(@patient_1.temperature.has_fever?).to eq(true)
     end
 
