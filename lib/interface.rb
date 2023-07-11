@@ -45,8 +45,14 @@ Choose an option below:
       puts "\nEnter the patient's name:"
       name = gets.chomp.split.map(&:capitalize).join(' ')
       puts "\nEnter the patient's age:"
-      age = gets.chomp.to_i
-      puts add_a_new_patient(name, age)
+      age = gets.chomp
+
+      until (age.match? /[a-zA-z]/) == false
+        puts "Please only enter a numerical value."
+        age = gets.chomp
+      end 
+
+      puts add_a_new_patient(name, age.to_i)
       
       return_to_home
     elsif input == "4" #Add a new temperature record for a patient
