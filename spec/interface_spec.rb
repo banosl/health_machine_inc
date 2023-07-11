@@ -11,15 +11,19 @@ RSpec.describe Interface do
 
   describe 'home_page' do
     it 'displays a welcome message and the 4 options for a user' do
-      interface = Interface.new("GroupHealth")
+      interface = Interface.new("Health Machine Inc.")
 
-      expect(interface.home_page).to eq("Welcome to GroupHealth\n
-        Choose an option below:\n
-        
-        1) Display all patients\n
-        2) Display a patient's latest temperature records\n
-        3) Add a new patient\n
-        4) Add a new temperature record for a patient")
+      expect(interface.home_page).to eq("Welcome to Health Machine Inc.\n
+----------------------------------------------------
+Choose an option below:
+
+1) Display all patients\n
+2) Display a patient's latest temperature records\n
+3) Add a new patient\n
+4) Add a new temperature record for a patient\n
+5) Exit")
     end
   end
+
+  
 end
