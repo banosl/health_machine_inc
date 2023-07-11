@@ -44,7 +44,10 @@ Choose an option below:
     @clinic.patient_latest_temperatures(name)
   end
 
-  def add_a_new_temp_record_for_patient
+  def add_a_new_temperature_record_for_patient(name, type, temp)
+    patient = @clinic.find_patient_by_name(name)
+    patient.record_temperature(type, temp)
 
+    "A new temperature reading has been added to #{patient.name}'s record."
   end
 end

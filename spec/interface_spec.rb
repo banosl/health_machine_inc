@@ -76,4 +76,18 @@ James\t 13")
 #{patient.name}\t #{patient.age}\t #{record_1[1][0]} F, #{record_1[1][1]} C, #{record_1[1][2]} K\s #{record_3[0].strftime("%a %b %e %H:%M")}\t #{patient.temperature[2].has_fever?}")
     end
   end
+
+  describe 'add_a_new_temperature_record_for_patient' do
+    it 'creates a new temperature record for a given patient' do
+      interface = Interface.new("Health Machine Inc.")
+      interface.add_a_new_patient("Marge", 54)
+
+      patient = interface.clinic.patients.last
+
+      interface.add_a_new_temperature_record_for_patient("Marge", "F", 98.6)
+
+      expect(patient.temperature.last.farenheit).to eq(98.6)
+      expect(interface.add_a_new_temperature_record_for_patient("Marge", "F", 101)).to eq("A new temperature reading has been added to Marge's record.")
+    end
+  end
 end
