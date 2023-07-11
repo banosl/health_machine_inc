@@ -25,5 +25,18 @@ Choose an option below:
     end
   end
 
-  
+  describe 'display_all_patients' do
+    it 'displays the names and ages of patiens on record in a table' do
+      interface = Interface.new("Health Machine Inc.")
+
+      interface.clinic.new_patient("Margo", 64)
+      interface.clinic.new_patient("Bennet", 24)
+      interface.clinic.new_patient("James", 13)
+
+      expect(interface.display_all_patients).to eq("Name\t Age\n
+Margo\t 64\n
+Bennet\t 24\n
+James\t 13")
+    end
+  end
 end

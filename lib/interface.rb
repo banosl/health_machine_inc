@@ -24,7 +24,14 @@ Choose an option below:
   end
 
   def display_all_patients
+    message = ["Name\t Age\n\n"]
 
+    @clinic.patients.each do|patient|
+      message << "#{patient.name}\t #{patient.age}\n\n"
+    end
+
+    message.last.chomp!.chomp!
+    message.join(",").gsub(",", "")
   end
 
   def display_patient_latest_temp_records
