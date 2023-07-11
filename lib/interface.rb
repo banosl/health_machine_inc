@@ -25,14 +25,14 @@ Choose an option below:
   end
   
   def execute_options(input)
-    if input == "1"
+    if input == "1" #Display all patients
       puts display_all_patients
 
       puts "\nEnter '1' to return to the home page or enter '2' to exit."
       response = gets.chomp
       
       return_to_home(response)
-    elsif input == "2"
+    elsif input == "2" #Display a patient's latest temperature records
       puts "\nEnter the patient's name:"
       name = gets.chomp.split.map(&:capitalize).join(' ')
 
@@ -47,18 +47,18 @@ Choose an option below:
       response = gets.chomp
       
       return_to_home(response)
-    elsif input == "3"
+    elsif input == "3" #Add a new patient
       puts "\nEnter the patient's name:"
       name = gets.chomp.split.map(&:capitalize).join(' ')
       puts "\nEnter the patient's age:"
       age = gets.chomp.to_i
-      add_a_new_patient(name, age)
+      puts add_a_new_patient(name, age)
 
       puts "\nEnter '1' to return to the home page or enter '2' to exit."
       response = gets.chomp
       
       return_to_home(response)
-    elsif input == "4"
+    elsif input == "4" #Add a new temperature record for a patient
       puts "\nEnter the patient's name"
       name = gets.chomp.split.map(&:capitalize).join(' ')
 
@@ -68,14 +68,17 @@ Choose an option below:
       puts "\nEnter the temperature reading:"
       temp = gets.chomp.to_f
 
-      add_a_new_temperature_record_for_patient(name, type, temp)
+      puts add_a_new_temperature_record_for_patient(name, type, temp)
       
       puts "\nEnter '1' to return to the home page or enter '2' to exit."
       response = gets.chomp
       
       return_to_home(response)
-    elsif input == "5"
-      puts "\nThank you. Goodbye."
+    elsif input == "5" #Exit
+      puts "\nThank you. Goodbye.\n"
+    else #Wrong input
+      puts "Please enter an option between 1 & 5"
+      home_page
     end
   end
 
@@ -93,7 +96,7 @@ Choose an option below:
   def add_a_new_patient(name, age)
     patients = @clinic.new_patient(name, age)
     
-    puts "\n#{patients.last.name} has been added to the system.\n-----------------------------------------------------"
+    "\n#{patients.last.name} has been added to the system.\n-----------------------------------------------------"
   end
  
   def display_patient_latest_temp_records(name)
@@ -104,14 +107,14 @@ Choose an option below:
     patient = @clinic.find_patient_by_name(name)
     patient.record_temperature(type, temp)
 
-    puts "\nA new temperature reading has been added to #{patient.name}'s record.\n-----------------------------------------------------"
+    "\nA new temperature reading has been added to #{patient.name}'s record.\n-----------------------------------------------------"
   end
 
   def return_to_home(input)
     if input == "1"
       home_page
     else
-      "\nThank you. Goodbye."
+      "\nThank you. Goodbye.\n"
     end
   end
 end
