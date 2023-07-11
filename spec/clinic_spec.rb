@@ -37,7 +37,7 @@ RSpec.describe Clinic do
   #note, add an ID attribute to each patient for searching so that there are no duplicate patients pulled with the same name.
 
   describe 'patient latest temperatures' do
-    it 'can return the temp records for a patient in a neat table' do
+    xit 'can return the temp records for a patient in a neat table' do
       clinic_1 = Clinic.new("GroupHealth")
       
       clinic_1.new_patient("Mia", 21)

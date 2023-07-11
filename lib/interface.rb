@@ -34,7 +34,7 @@ Choose an option below:
       name = gets.chomp.split.map(&:capitalize).join(' ')
 
       if clinic.find_patient_by_name(name)
-        puts display_patient_latest_temp_records(name)
+        display_patient_latest_temp_records(name)
       else
         puts "\n\nThat patient doesn't exist.\n\n"
         home_page

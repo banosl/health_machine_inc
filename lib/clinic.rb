@@ -23,14 +23,14 @@ class Clinic
   end
 
   def patient_latest_temperatures(name)
+    i = 0
     patient = find_patient_by_name(name)
-    record_1 = patient.latest_temperature_readings.to_a[0]
-    record_2 = patient.latest_temperature_readings.to_a[1]
-    record_3 = patient.latest_temperature_readings.to_a[2]
 
-    "\n\nName\t Age\t Temperature Reading\t\s\s Date/Time\t\t Fever\n
-#{patient.name}\t #{patient.age}\t #{record_1[1][0]} F, #{record_1[1][1]} C, #{record_1[1][2]} K\s #{record_1[0].strftime("%a %b %e %H:%M")}\t #{patient.temperature[0].has_fever?}
-#{patient.name}\t #{patient.age}\t #{record_1[1][0]} F, #{record_1[1][1]} C, #{record_1[1][2]} K\s #{record_2[0].strftime("%a %b %e %H:%M")}\t #{patient.temperature[1].has_fever?}
-#{patient.name}\t #{patient.age}\t #{record_1[1][0]} F, #{record_1[1][1]} C, #{record_1[1][2]} K\s #{record_3[0].strftime("%a %b %e %H:%M")}\t #{patient.temperature[2].has_fever?}"
+    puts  "\n\nName\t Age\t Temperature Reading\t\s\s\s\s Date/Time\t\t Fever\n"
+
+    patient.latest_temperature_readings.each do |k, v|
+      puts "#{patient.name}\t #{patient.age}\t #{v[0]} F, #{v[1]} C, #{v[2]} K\s\s #{k.strftime("%a %b %e %H:%M")}\t #{patient.temperature[i].has_fever?}"
+      i += 1
+    end
   end
 end
