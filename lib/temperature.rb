@@ -9,7 +9,11 @@ class Temperature
   end
 
   def has_fever?
-    @farenheit >= 100.4
+    if @farenheit >= 100.4
+      "Yes"
+    else
+      "No"
+    end
   end
 
   def record_temperature_farenheit(temp)

@@ -87,14 +87,14 @@ RSpec.describe Temperature do
       expect(@temperature_1.farenheit).to eq(101)
       expect(@temperature_1.celsius).to eq(38.33)
       expect(@temperature_1.kelvin).to eq(311.48)
-      expect(@temperature_1.has_fever?).to eq(true)
+      expect(@temperature_1.has_fever?).to eq("Yes")
     end
 
     it 'can return FALSE for when a patient has a temperature below 100.4 F, 38 C, 311.15 K' do
       @temperature_1.record_temperature_farenheit(98.6)
 
       expect(@temperature_1.farenheit).to eq(98.6)
-      expect(@temperature_1.has_fever?).to eq(false)
+      expect(@temperature_1.has_fever?).to eq("No")
     end
   end
 end
