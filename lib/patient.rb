@@ -20,18 +20,10 @@ class Patient
   end
 
   def latest_temperature_readings
-    #this breaks if there are fewer than 3 records for a patient's temperature
-    #i can iterate through temperature from -1 to -3 index and then create the hash
-    {
-      temperature[-1].time => [temperature[-1].farenheit,
-                               temperature[-1].celsius,
-                               temperature[-1].kelvin],
-      temperature[-2].time => [temperature[-2].farenheit,
-                               temperature[-2].celsius,
-                               temperature[-2].kelvin],
-      temperature[-3].time => [temperature[-3].farenheit,
-                               temperature[-3].celsius,
-                               temperature[-3].kelvin]
-    }
+    latest = {}
+    temperature.reverse[0..2].each do |reading|
+      latest[reading.time] = [reading.farenheit, reading.celsius, reading.kelvin]
+    end
+    latest
   end
 end

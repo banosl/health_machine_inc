@@ -47,5 +47,16 @@ RSpec.describe Patient do
       })
       #need a test for checking that it doesn't have the 4th oldest record
     end
+
+    it 'returns the latest temperature readings even if there is only one' do
+      patient_1 = Patient.new("James", 43)
+      patient_1.record_temperature("F", 99)
+
+      expect(patient_1.temperature.count).to eq(1)
+      expect(patient_1.latest_temperature_readings).to eq({
+                                                            patient_1.temperature[-1].time => [patient_1.temperature[-1].farenheit, 
+                                                                                               patient_1.temperature[-1].celsius, 
+                                                                                               patient_1.temperature[-1].kelvin]})
+    end
   end
 end
