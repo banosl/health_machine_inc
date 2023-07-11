@@ -25,7 +25,6 @@ Choose an option below:
   end
   
   def execute_options(input)
-    #add the return to home option here
     if input == "1"
       puts display_all_patients
 
