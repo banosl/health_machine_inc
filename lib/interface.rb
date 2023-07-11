@@ -27,11 +27,8 @@ Choose an option below:
   def execute_options(input)
     if input == "1" #Display all patients
       puts display_all_patients
-
-      puts "\nEnter '1' to return to the home page or enter '2' to exit."
-      response = gets.chomp
       
-      return_to_home(response)
+      return_to_home
     elsif input == "2" #Display a patient's latest temperature records
       puts "\nEnter the patient's name:"
       name = gets.chomp.split.map(&:capitalize).join(' ')
@@ -42,22 +39,16 @@ Choose an option below:
         puts "\n\nThat patient doesn't exist.\n\n"
         home_page
       end
-
-      puts "\nEnter '1' to return to the home page or enter '2' to exit."
-      response = gets.chomp
       
-      return_to_home(response)
+      return_to_home
     elsif input == "3" #Add a new patient
       puts "\nEnter the patient's name:"
       name = gets.chomp.split.map(&:capitalize).join(' ')
       puts "\nEnter the patient's age:"
       age = gets.chomp.to_i
       puts add_a_new_patient(name, age)
-
-      puts "\nEnter '1' to return to the home page or enter '2' to exit."
-      response = gets.chomp
       
-      return_to_home(response)
+      return_to_home
     elsif input == "4" #Add a new temperature record for a patient
       puts "\nEnter the patient's name"
       name = gets.chomp.split.map(&:capitalize).join(' ')
@@ -70,10 +61,7 @@ Choose an option below:
 
       puts add_a_new_temperature_record_for_patient(name, type, temp)
       
-      puts "\nEnter '1' to return to the home page or enter '2' to exit."
-      response = gets.chomp
-      
-      return_to_home(response)
+      return_to_home
     elsif input == "5" #Exit
       puts "\nThank you. Goodbye.\n"
     else #Wrong input
@@ -110,7 +98,10 @@ Choose an option below:
     "\nA new temperature reading has been added to #{patient.name}'s record.\n-----------------------------------------------------"
   end
 
-  def return_to_home(input)
+  def return_to_home
+    puts "\nEnter '1' to return to the home page or enter '2' to exit."
+    input = gets.chomp
+
     if input == "1"
       home_page
     else
