@@ -1,4 +1,4 @@
-#Temperature
+# Temperature
 
 A small CLI app that allows the user to add patients to the fictional Health Machine Inc.'s system. Once added, a user can record temperature readings for a given patient and then call the patient's latest 3 records. All data is gone upon exiting the app.
 
