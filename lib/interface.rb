@@ -53,13 +53,28 @@ Choose an option below:
       puts "\nEnter the patient's name"
       name = gets.chomp.split.map(&:capitalize).join(' ')
 
+      until @clinic.find_patient_by_name(name)
+        puts "\nThat patient does not exist. Please enter an existing patient."
+        name = gets.chomp.split.map(&:capitalize).join(' ')
+      end
+      
       puts "\nEnter 'F' for a Farenheit reading or 'C' for a Celsius reading:"
       type = gets.chomp.capitalize
 
-      puts "\nEnter the temperature reading:"
-      temp = gets.chomp.to_f
+      until type == 'F' || type == "C"
+        puts "Please enter only F or C."
+        type = gets.chomp.capitalize
+      end
 
-      puts add_a_new_temperature_record_for_patient(name, type, temp)
+      puts "\nEnter the temperature reading:"
+      temp = gets.chomp
+
+      until (temp.match? /[a-zA-z]/) == false
+        puts "Please only enter a numerical value."
+        temp = gets.chomp
+      end
+
+      puts add_a_new_temperature_record_for_patient(name, type, temp.to_f)
       
       return_to_home
     elsif input == "5" #Exit
