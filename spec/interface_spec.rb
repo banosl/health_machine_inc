@@ -8,4 +8,18 @@ RSpec.describe Interface do
     expect(interface.clinic).to be_instance_of(Clinic)
     expect(interface.clinic.name).to eq ("GroupHealth")
   end
+
+  describe 'home_page' do
+    it 'displays a welcome message and the 4 options for a user' do
+      interface = Interface.new("GroupHealth")
+
+      expect(interface.home_page).to eq("Welcome to GroupHealth\n
+        Choose an option below:\n
+        
+        1) Display all patients\n
+        2) Display a patient's latest temperature records\n
+        3) Add a new patient\n
+        4) Add a new temperature record for a patient")
+    end
+  end
 end
