@@ -20,7 +20,7 @@ Choose an option below:
   end
 
   def execute_options
-
+    #add the return to home option here
   end
 
   def display_all_patients
@@ -33,12 +33,14 @@ Choose an option below:
     message.last.chomp!.chomp!
     message.join(",").gsub(",", "")
   end
-
-  def display_patient_latest_temp_records
-
+  
+  def add_a_new_patient(name, age)
+    patients = @clinic.new_patient(name, age)
+    
+    "#{patients.last.name} has been added to the system."
   end
-
-  def add_a_new_patient
+ 
+  def display_patient_latest_temp_records
 
   end
 

@@ -39,4 +39,19 @@ Bennet\t 24\n
 James\t 13")
     end
   end
+
+  describe "add_a_new_patient" do
+    it 'can add a patient to the clinic and display a confirmation message' do
+      interface = Interface.new("Health Machine Inc.")
+
+      expect(interface.clinic.patients).to eq([])
+
+      interface.add_a_new_patient("Marge", 54)
+
+      expect(interface.clinic.patients.first.name).to eq("Marge")
+      expect(interface.clinic.patients.first.age).to eq(54)
+
+      expect(interface.add_a_new_patient("Billy", 16)).to eq("Billy has been added to the system.")
+    end
+  end
 end
