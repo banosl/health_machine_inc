@@ -40,8 +40,8 @@ Choose an option below:
     "#{patients.last.name} has been added to the system."
   end
  
-  def display_patient_latest_temp_records
-
+  def display_patient_latest_temp_records(name)
+    @clinic.patient_latest_temperatures(name)
   end
 
   def add_a_new_temp_record_for_patient
