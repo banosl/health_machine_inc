@@ -20,6 +20,8 @@ class Patient
   end
 
   def latest_temperature_readings
+    #this breaks if there are fewer than 3 records for a patient's temperature
+    #i can iterate through temperature from -1 to -3 index and then create the hash
     {
       temperature[-1].time => [temperature[-1].farenheit,
                                temperature[-1].celsius,
