@@ -90,4 +90,33 @@ James\t 13")
       expect(interface.add_a_new_temperature_record_for_patient("Marge", "F", 101)).to eq("A new temperature reading has been added to Marge's record.")
     end
   end
+
+#   describe 'execute_options' do
+#     it 'returns all patients currently on record when option 1 is given' do
+#       interface = Interface.new("Health Machine Inc.")
+
+#       interface.clinic.new_patient("Margo", 64)
+#       interface.clinic.new_patient("Bennet", 24)
+#       interface.clinic.new_patient("James", 13)
+
+#       expect(interface.execute_options("1")).to eq("Name\t Age\n
+# Margo\t 64\n
+# Bennet\t 24\n
+# James\t 13")
+#     end
+
+#     it 'prompts user to enter patient info when option 2 is given' do
+#       interface = Interface.new("Health Machine Inc.")
+#       binding.pry
+#       # expect(interface.execute_options("2")).to eq("Enter patient name:")
+#     end
+#   end
+
+  # describe 'return_to_home' do
+  #   it 'prompts user to return to home or exit' do
+  #     interface = Interface.new("Health Machine Inc.")
+
+  #     expect(interface.return_to_home("Y")).to eq(interface.home_page)
+  #   end
+  # end
 end
