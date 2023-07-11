@@ -21,3 +21,9 @@ Ruby version 2.7.4 is required
 
 1. Clone down the app
 2. run `ruby runner.rb` in the terminal
+
+Future updates:
+
+1. Add an ID attribute to patients so that each can be unique.
+2. Add a find_patient_by_ID method to Clinic so that the program can be more specific about the patient look up.
+3. Break up the execute_options method in Interface into a helper method per option for better abstraction.

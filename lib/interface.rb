@@ -24,6 +24,8 @@ Choose an option below:
     execute_options(input)
   end
   
+  #gotta break these down into smaller methods
+
   def execute_options(input)
     if input == "1" #Display all patients
       puts display_all_patients
