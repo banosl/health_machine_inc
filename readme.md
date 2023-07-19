@@ -49,12 +49,11 @@ While the current version of the Health Machine Inc. CLI app provides basic pati
 
 ## Contributor
 
-<div>
-<center>
-<img src="https://avatars.githubusercontent.com/u/111591731?v=4" alt="Profile" width="80" height="80"><br>
-Leo Baños García
-
-<a href="https://www.linkedin.com/in/leo-banos-garcia/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white">
-<a href="https://github.com/banosl"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white">
-
+<div align="center">
+  
+  <img src="https://avatars.githubusercontent.com/u/111591731?v=4" alt="Profile" width="80" height="80"><br>
+  Leo Baños García
+  
+  <a href="https://www.linkedin.com/in/leo-banos-garcia/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white">
+  <a href="https://github.com/banosl"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white">
 </div>
