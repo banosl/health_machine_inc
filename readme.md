@@ -1,29 +1,48 @@
-# Temperature
+# Health Machine Inc. - Patient Management CLI App
 
-A small CLI app that allows the user to add patients to the fictional Health Machine Inc.'s system. Once added, a user can record temperature readings for a given patient and then call the patient's latest 3 records. All data is gone upon exiting the app.
+## Overview
 
-This was built from the prompt and steps below:
+Health Machine Inc. CLI app is a small Ruby application that allows users to manage patient records within the fictional Health Machine Inc.'s system. With this app, users can easily add new patients, record temperature readings for each patient, and retrieve the latest 3 temperature records. Additionally, the app provides a feature to determine if a patient had a fever in the latest 3 records. The app is designed to handle all data in-memory and clears the data upon exiting.
 
-Prompt:
+## Motivation
 
-Let's say you were asked to build a system for processing temperatures to detect whether someone was showing signs of infection. A fever is one of the signs of infection. The system in question has several thousand patients and their temperatures are taken every hour. Over the course of the day a person's temperature fluctuates as much as 1 degree in response to activity, and not everyone starts out at the same temperature. Some individuals are warmer than others, and it can vary as much as 1 degree from person to person. In addition, how you take a temperature impacts the result also by 1 degree. You can take it by ear, mouth, armpit, etc. You can also take temperatures in Celsius or Fahrenheit, and if you are serious about your temperatures, Kelvin.
+I created this CLI app to sharpen my Ruby programming skills and explore test-driven development practices. The healthcare theme was chosen due to the clear definition of attributes required for patient records, making it an ideal scenario to showcase the need for data management and frequent updates.
 
-Steps:
+## Features
 
-Step 1: Design a class that represents a temperature.
-Step 2: Using the temperature class, show me how you would write code to detect whether someone has a fever or not.
-Step 3: How would you approach testing the fever detector class or method?
-Step 4: We have a stream of these coming into the system we want to be able to quickly group the data by patient as detect the fever but the feed never stops we don’t care about temperatures from a week ago, a day ago, and in some cases even ones from earlier in the day old data stops being useful to the algorithm pretty quickly what approach should we use so that we can always get the last X temperatures for a patient efficiently?
+- Add new patients to the system.
+- Record and manage temperature readings for each patient.
+- Retrieve the latest 3 temperature records for a specific patient.
+- Determine if a patient had a fever in the latest 3 records.
 
-Running the app:
+## Requirements
 
-Ruby version 2.7.4 is required
+- Ruby version 2.7.4
+- The 'rspec' gem for running tests.
 
-1. Clone down the app
-2. run `ruby runner.rb` in the terminal
+## How to Use
 
-Future updates:
+1. Clone this repository to your local machine.
+2. Navigate to the app's directory.
+3. Execute the app by running the following command in your terminal:
 
-1. Add an ID attribute to patients so that each can be unique.
-2. Add a find_patient_by_ID method to Clinic so that the program can be more specific about the patient look up.
-3. Break up the execute_options method in Interface into a helper method per option for better abstraction.
+  `ruby runner.rb`
+
+
+Make sure you have Ruby version 2.7.4 installed on your system before running the app.
+
+## Test-Driven Development
+
+This app was developed following test-driven development (TDD) principles, which includes both unit and integration tests. The test suite ensures the app's reliability and correctness while allowing for easier maintenance and future updates.
+
+## Future Updates
+
+While the current version of the Health Machine Inc. CLI app provides basic patient temperature record functionality, I intend to continue developing the app with the following features:
+
+1. **Unique Patient IDs:** Introduce an ID attribute for each patient, ensuring that every patient has a unique identifier. This enhancement will facilitate more precise patient lookups and provide a foundation for future features.
+
+2. **Enhanced Patient Lookup:** Add a `find_patient_by_ID` method to `Clinic.rb` to enable more specific patient lookups using their unique ID. This improvement will make patient retrieval more efficient and reliable.
+
+3. **Refined User Interface:** To improve code organization and maintainability, break down the `execute_options` method in `Interface.rb` into separate helper methods, one per option. This refactoring will enhance abstraction and readability of the codebase.
+
+4. **Support for Additional Health Records:** In addition to temperature readings, I plan to extend the app to support other health metrics, such as weight, blood pressure, oxygen levels, and more. Users will have the flexibility to record various health data for each patient, making the app more versatile for healthcare management.
