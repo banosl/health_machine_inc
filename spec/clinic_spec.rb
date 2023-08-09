@@ -1,4 +1,5 @@
 require './lib/clinic.rb'
+require 'timecop'
 
 RSpec.describe Clinic do
   it 'clinic exists and has attributes' do
@@ -37,7 +38,7 @@ RSpec.describe Clinic do
   #note, add an ID attribute to each patient for searching so that there are no duplicate patients pulled with the same name.
 
   describe 'patient latest temperatures' do
-    xit 'can return the temp records for a patient in a neat table' do
+    it 'can return the temp records for a patient in a neat table' do
       clinic_1 = Clinic.new("GroupHealth")
       
       clinic_1.new_patient("Mia", 21)
@@ -45,15 +46,13 @@ RSpec.describe Clinic do
       patient.record_temperature("F", 99)
       patient.record_temperature("F", 98)
       patient.record_temperature("F", 100)
-
+   
       record_1 = patient.latest_temperature_readings.to_a[0]
       record_2 = patient.latest_temperature_readings.to_a[1]
       record_3 = patient.latest_temperature_readings.to_a[2]
 
-      expect(clinic_1.patient_latest_temperatures("Mia")).to eq("\n\nName\t Age\t Temperature Reading\t\s\s Date/Time\t\t Fever\n
-#{patient.name}\t #{patient.age}\t #{record_1[1][0]} F, #{record_1[1][1]} C, #{record_1[1][2]} K\s #{record_1[0].strftime("%a %b %e %H:%M")}\t #{patient.temperature[0].has_fever?}
-#{patient.name}\t #{patient.age}\t #{record_1[1][0]} F, #{record_1[1][1]} C, #{record_1[1][2]} K\s #{record_2[0].strftime("%a %b %e %H:%M")}\t #{patient.temperature[1].has_fever?}
-#{patient.name}\t #{patient.age}\t #{record_1[1][0]} F, #{record_1[1][1]} C, #{record_1[1][2]} K\s #{record_3[0].strftime("%a %b %e %H:%M")}\t #{patient.temperature[2].has_fever?}")
+      expected_output = "\n\nName\t Age\t Temperature Reading\t\t Date/Time\t\t Fever\n\nMia\t 21\t 100 F, 37.78 C, 310.93 K\t #{record_1[0].strftime("%a %b %e %H:%M")}\t No\nMia\t 21\t 98 F, 36.67 C, 309.82 K\t #{record_2[0].strftime("%a %b %e %H:%M")}\t No\nMia\t 21\t 99 F, 37.22 C, 310.37 K\t #{record_3[0].strftime("%a %b %e %H:%M")}\t No\n"
+      expect {clinic_1.patient_latest_temperatures("Mia")}.to output(expected_output).to_stdout
     end
   end
 end
