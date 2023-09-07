@@ -31,7 +31,6 @@ class Clinic
       output += "#{patient.name}\t #{patient.age}\t #{v[0]} F, #{v[1]} C, #{v[2]} K\t #{k.strftime("%a %b %e %H:%M")}\t #{patient.temperature[i].has_fever?}\n"
       i += 1
     end
-    binding.pry
     puts output
   end
 end
