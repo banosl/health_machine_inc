@@ -1,4 +1,5 @@
-require 'pry'
+require 'simplecov'
+SimpleCov.start
 require './lib/patient.rb'
 
 RSpec.describe Patient do

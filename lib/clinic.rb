@@ -26,11 +26,11 @@ class Clinic
     i = 0
     patient = find_patient_by_name(name)
 
-    puts  "\n\nName\t Age\t Temperature Reading\t\s\s\s\s Date/Time\t\t Fever\n"
-
+    output = "\n\nName\t Age\t Temperature Reading\t\t Date/Time\t\t Fever\n\n"
     patient.latest_temperature_readings.each do |k, v|
-      puts "#{patient.name}\t #{patient.age}\t #{v[0]} F, #{v[1]} C, #{v[2]} K\s\s #{k.strftime("%a %b %e %H:%M")}\t #{patient.temperature[i].has_fever?}"
+      output += "#{patient.name}\t #{patient.age}\t #{v[0]} F, #{v[1]} C, #{v[2]} K\t #{k.strftime("%a %b %e %H:%M")}\t #{patient.temperature[i].has_fever?}\n"
       i += 1
     end
+    puts output
   end
 end

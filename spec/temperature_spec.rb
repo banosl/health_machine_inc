@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require './lib/temperature.rb'
 require './lib/patient.rb'
 
